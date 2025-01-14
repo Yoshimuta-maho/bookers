@@ -1,2 +1,10 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<span strange>Title:<span:>
+<p><%= @book.title %></p>
+
+<span strange>Body:<span:>
+<p><%= @book.body %></p>
+
+<span>
+<%= link_to back, "/books/#{book.id}" %>
+</span>
+
