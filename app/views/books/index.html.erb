@@ -1,13 +1,42 @@
+<p id="notice"></p>
 <h1>Books</h1>
-
-<% @books.each do |book| %>
-
-  <p>book</p>
-  <span>
-   <%= link_to book.title, "/books/#{book.id}" %>
-  </span>
-
+<table>
+ <thead>
+   <th>
+    Title
+   </th>
+   <th>
+    Body
+   </th>
+   <th colspan="3">
+   </th>
+   <th colspan="3">
+   </th>
+   <th colspan="3">
+   </th>
+ </thead>
+ <tbody>
+  <% @books.each do |book| %>
+  <tr>
+   <td>
+   <%= book.title %>
+   </td>
+   <td>
+   <%= book.body %>
+   </td>
+   <td>
+   <%= link_to "show", "/books/#{book.id}" %>
+   </td>
+   <td>
+   <%= link_to "edit", edit_book_path(book.id) %>
+   </td>
+   <td>
+   <%= link_to "destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+   </td>
+  </tr>
   <% end %>
+ </tbody>
+</table>
 
   <h4>New Book</h4>
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
@@ -21,3 +50,5 @@
   <p class="input"><%= f.submit 'Create Book' %></p>
 
 <% end %>
+
+  <%= link_to "削除", book_path(@books), method: :delete, data: { confirm: '本当に削除しますか?' } %>

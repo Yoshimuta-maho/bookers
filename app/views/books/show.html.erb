@@ -1,10 +1,15 @@
-<span strange>Title:<span:>
-<p><%= @book.title %></p>
+<p><strong>Title:</strong><%= @book.title %></p>
 
-<span strange>Body:<span:>
-<p><%= @book.body %></p>
+<p><strong>Body:</strong><%= @book.body %></p>
 
-<span>
-<%= link_to back, "/books/#{book.id}" %>
+<span class="edit">
+<%= link_to "edit", edit_book_path(@book.id) %>
 </span>
 
+<span class="back">
+<%= link_to "back", "/books" %>
+</span>
+
+<span class="delite">
+<%= link_to "削除", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</span>
