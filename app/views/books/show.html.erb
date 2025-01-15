@@ -1,3 +1,10 @@
+<div>
+<span class="color-green">
+  <%= flash[:notice] %>
+  </span>
+</div>
+<%= yield %>
+
 <p><strong>Title:</strong><%= @book.title %></p>
 
 <p><strong>Body:</strong><%= @book.body %></p>

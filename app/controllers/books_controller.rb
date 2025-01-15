@@ -7,11 +7,11 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     if @book.save
       flash[:notice] = "Book was successfully created."
-      redirect_to books_path(@book.id)
+      redirect_to @book, notice:"Book was successfully created" #AIメンターに質問して真似た記載をした部分。""の中身が同じものが二つあるが、どちらか消去しても大丈夫なのか
     else
       @books = Book.all
       flash.now[:notice] = "errors prohibited this book from being saved:"
-      render :index
+      render :index #質問フォーム作成時、エラーが出ていた部分。『render :new』としているとフォームに記載したエラーが出てきた
     end
   end
 
