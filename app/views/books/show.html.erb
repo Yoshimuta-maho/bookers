@@ -9,7 +9,3 @@
 <span class="back">
 <%= link_to "back", "/books" %>
 </span>
-
-<span class="delite">
-<%= link_to "削除", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-</span>

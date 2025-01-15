@@ -1,12 +1,17 @@
 class BooksController < ApplicationController
   def new
-    
+    @book = Book.new
   end
 
   def create
-    book = Book.new(book_params)
+    @book = Book.new(book_params)
     if @book.save
-    redirect_to books_path
+      flash[:notice] = "Book was successfully created."
+      redirect_to books_path(@book.id)
+    else
+      @books = Book.all
+      flash.now[:notice] = "errors prohibited this book from being saved:"
+      render :index
     end
   end
 

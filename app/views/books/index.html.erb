@@ -39,6 +39,15 @@
 </table>
 
   <h4>New Book</h4>
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
   
   <p>title</p>
@@ -50,5 +59,3 @@
   <p class="input"><%= f.submit 'Create Book' %></p>
 
 <% end %>
-
-  <%= link_to "削除", book_path(@books), method: :delete, data: { confirm: '本当に削除しますか?' } %>
